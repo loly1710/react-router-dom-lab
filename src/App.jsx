@@ -1,7 +1,6 @@
 // src/App.jsx
 import { useState } from "react";
 import { Route, Routes, BrowserRouter} from "react-router-dom";
-
 import MailboxForm from "./components/MailboxForm";
 import MailboxList from "./components/MailboxList";
 import MailboxDetails from "./components/MailboxDetails";
@@ -18,7 +17,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <NavBar />
-      <h1>Mailbox List</h1>
       <Routes>
       <Route path="/" element={<main><h1>Post Office</h1></main>} />
         <Route

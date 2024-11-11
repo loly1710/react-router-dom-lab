@@ -14,12 +14,8 @@ const MailboxDetails = (props) => {
     <div>
       <h1>Mailbox {selectedBox._id} </h1>
       <h2>Datails</h2>
-      <dl>
-        <dt>Boxholder:</dt>
-        <dd>{selectedBox.boxholder}</dd>
-        <dt>Box size:</dt>
-        <dd>{selectedBox.boxSize}</dd>
-      </dl>
+      <p>Boxholder: {selectedBox.boxholder}</p>
+      <p>Box size: {selectedBox.boxSize}</p>
     </div>
   );
 };

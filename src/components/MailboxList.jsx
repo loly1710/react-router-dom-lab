@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-//import './MailboxList.css';
 
 const MailboxList = (props) => {
   return (
     <div>
-      <h2>Mailbox List</h2>
+      <h1>Mailbox List</h1>
       <ul>
         {props.mailboxes.map((mailboxNow) => (
-          <li key={mailboxNow.name}>
-            <Link to={`/mailboxes/${mailboxNow._id}`}>{mailboxNow.name}</Link>
+          <li className="mail-box" key={mailboxNow._id}>
+            <Link to={`/mailboxes/${mailboxNow._id}`}>Mailbox {mailboxNow._id}</Link>
           </li>
         ))}
       </ul>
