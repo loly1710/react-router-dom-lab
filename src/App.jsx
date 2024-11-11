@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import { useState } from "react";
+import { Route, Routes, BrowserRouter} from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import MailboxForm from "./components/MailboxForm";
+import MailboxList from "./components/MailboxList";
+import MailboxDetails from "./components/MailboxDetails";
+import NavBar from "./components/NavBar";
+
+const App = () => {
+  const [mailboxes, setMailboxes] = useState([]);
+
+  const addBox = (newMailBox) => {
+    newMailBox._id = mailboxes.length + 1;
+    setMailboxes([...mailboxes, newMailBox]);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <BrowserRouter>
+      <NavBar />
+      <h1>Mailbox List</h1>
+      <Routes>
+      <Route path="/" element={<main><h1>Post Office</h1></main>} />
+        <Route
+          path="/mailboxes"
+          element={<MailboxList mailboxes={mailboxes} />}
+        />
+        <Route path="new-mailbox" element={<MailboxForm addBox={addBox} />} />
+        <Route
+          path="/mailboxes/:mailboxId"
+          element={<MailboxDetails mailboxes={mailboxes} />}
+        />
+        <Route path="*" element={<h2>Page not Found</h2>} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
